@@ -1,0 +1,69 @@
+package lv.venta.model;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+
+@Table(name = "CrouseTable")
+@Entity
+public class Course {
+	
+	@Setter(value = AccessLevel.NONE)
+	@Column(name = "Cid")
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long cid;
+	
+	@NotNull
+	@NotEmpty
+	@Pattern(regexp = "[A-Z]{1}[a-z0-9]{1,40}")
+	@Column(name = "Title")
+	private String title;
+	
+	@Min(1)
+	@Max(30)
+	@Column(name = "CreditPoints")
+	private int creditPoints;
+	
+	
+	@OneToOne
+	@JoinColumn(name = "Pid") // join column ir ar id no professor klases (ar ko saista) 
+	private Professor professor;
+	
+	@OneToMany(mappedBy = "course")
+	@ToString.Exclude
+	private Collection<Grade> grades = new ArrayList<Grade>();
+	
+	
+	public Course(String title, int creditPoints, Professor professor) {
+		setTitle(title);
+		setCreditPoints(creditPoints);
+		setProfessor(professor);
+	}
+	
+}
