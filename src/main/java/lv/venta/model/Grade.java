@@ -40,7 +40,7 @@ public class Grade {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "Sid") // join column ir ar id no professor klases (ar ko saista) 
+	@JoinColumn(name = "Pid") // PID ir mantots no person klasees
 	private Student student;
 	
 	@ManyToOne

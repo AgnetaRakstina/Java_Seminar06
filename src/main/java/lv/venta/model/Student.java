@@ -28,11 +28,7 @@ import lombok.ToString;
 @ToString
 public class Student extends Person {
 	
-	@Setter(value = AccessLevel.NONE)
-	@Column(name = "Sid")
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long sid;
+	//id iznem ara un izmatno ieksa person klase
 	
 	//name un surname nemts no person klases
 	

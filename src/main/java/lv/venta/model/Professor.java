@@ -31,11 +31,7 @@ import lv.venta.model.enums.Degree;
 @Entity
 public class Professor extends Person {
 	
-	@Setter(value = AccessLevel.NONE)
-	@Column(name = "Pid")
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long pid;
+	// id iznem ara un izmanto ieksa persona
 
 	// name un surname manto no Person klases
 	
