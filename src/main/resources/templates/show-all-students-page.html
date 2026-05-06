@@ -1,0 +1,13 @@
+<html xmlns:th="http://www.thymleaf.org">
+	<body>
+		<h1 th:text="${myHeader}">Visi studenti no java puses:</h1>
+		
+		<table>
+			<tr th:each="tempP : ${package}" >
+				<td th:text="${tempP.sid}"></td>
+				<td th:text="${tempP.name}"></td>
+				<td th:text="${tempP.surname}"></td>
+			</tr>
+		</table>
+	</body>
+</html>
