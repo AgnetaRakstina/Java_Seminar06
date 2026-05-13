@@ -1,0 +1,14 @@
+<html xmlns:th="http://www.thymleaf.org">
+	<body>
+		
+		
+		<table>
+			<tr th:each="tempC : ${package}" >
+				<td th:text="${tempC.Cid}"></td>
+				<td th:text="${tempC.title}"></td>
+				<td th:text="${tempC.creditPoints}"></td>
+				<td th:text="${tempC.professor.name}"></td>
+			</tr>
+		</table>
+	</body>
+</html>
